@@ -29,10 +29,16 @@ public class WordCount {
 	 *         associated with the number of occurrences of the word
 	 */
 	public static Map<String, Integer> countWords(List<String> words) {
+		Map<String, Integer> wordCounts = new HashMap<>();
 
-		// FIXME
-		throw new NotYetImplementedException();
+		// Iterate over each word in the list
+		for (String word : words) {
+			// If the word is already in the map, increment its count
+			wordCounts.put(word, wordCounts.getOrDefault(word, 0) + 1);
+		}
 
+		// Return the populated map
+		return wordCounts;
 	}
 	
 	public static void main(String[] args) {
@@ -46,7 +52,8 @@ public class WordCount {
 		wordList.add("be");
 		Map<String, Integer> words = countWords(wordList);
 		
-		//TODO: Write code that will iterate over the words map
-		//to verify its contents
+		for (Map.Entry<String, Integer> entry : words.entrySet()) {
+			System.out.println("Key: \"" + entry.getKey() + "\", Value: " + entry.getValue());
+		}
 	}
 }
